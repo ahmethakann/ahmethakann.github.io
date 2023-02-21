@@ -1,0 +1,69 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<!-- ================================
+Start SEO blocks
+================================= -->
+{% block title %}{% endblock %}
+{% block decription %}{% endblock %}
+{% block keywords %}{% endblock %}
+<!-- ================================
+END SEO blocks
+================================= -->
+
+<!-- ================================
+Start CSS blocks
+================================= -->
+{% block extend_header %}{% endblock %}
+<!-- ================================
+END CSS blocks
+================================= -->
+
+<!-- ================================
+Start script blocks
+================================= -->
+{% block extend_footer %}{% endblock %}
+<!-- ================================
+END script blocks
+================================= -->
+
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
+<section>
+  <div class="innerPageBannerCol">
+    <div class="container">
+      <div class="row g-4 g-md-3  align-items-center">
+        <div class="col-md-6">
+          <div class="bannerContent">
+            <h1 class="xlTitle pb-md-3">{{object.name}}</h1>
+            <p>{{object.description}}</p>
+          </div>
+        </div>
+        {% if object.portfolio %}
+        <div class="col-md-6">
+          <img src="{{ object.portfolio.url }}" alt="{{ object.image_alt }}" class="img-fluid">
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if object.pdfs %}
+<section>
+  <div class="sectionSpaceSm">
+    <div class="container">
+      {{object.body|safe}}
+      <div class="col-auto mt-4">
+        <a download href="{{ object.pdfs.url }}" class="btn btnPrimary">Download Pdf</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+<!-- ================================
+End Content
+================================= -->
+{%endblock%}
